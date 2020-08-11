@@ -27,6 +27,10 @@ RUN apt-get update \
         vim \
         nano \
     && \
+    # pecl PHP extensions
+    pecl install \
+        xdebug-2.9.5 \
+    && \
     # Configure PHP extensions
     docker-php-ext-configure \
         gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
@@ -52,6 +56,10 @@ RUN apt-get update \
         sysvsem \
         sysvshm \
         zip
+        && \
+        # Enable PHP extensions
+        docker-php-ext-enable \
+            xdebug
 
 ADD https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz /tmp/
 
