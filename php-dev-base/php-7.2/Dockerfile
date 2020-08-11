@@ -55,11 +55,11 @@ RUN apt-get update \
         sysvmsg \
         sysvsem \
         sysvshm \
-        zip
-        && \
-        # Enable PHP extensions
-        docker-php-ext-enable \
-            xdebug
+        zip \
+    && \
+    # Enable PHP extensions
+    docker-php-ext-enable \
+        xdebug
 
 ADD https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz /tmp/
 
