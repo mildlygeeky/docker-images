@@ -29,10 +29,6 @@ RUN apt-get update \
         vim \
         nano \
     && \
-    # pecl PHP extensions
-    pecl install \
-        xdebug-2.8.1 \
-    && \
     # Configure PHP extensions
     docker-php-ext-configure \
         gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
@@ -58,10 +54,6 @@ RUN apt-get update \
         sysvsem \
         sysvshm \
         zip \
-    && \
-    # Enable PHP extensions
-    docker-php-ext-enable \
-        xdebug
 
 ADD https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz /tmp/
 
@@ -79,9 +71,7 @@ RUN echo "upload_max_filesize = 10M" > /usr/local/etc/php/php.ini && \
     echo "opcache.revalidate_freq = 0" >> /usr/local/etc/php/php.ini && \
     echo "opcache.validate_timestamps = 1" >> /usr/local/etc/php/php.ini && \
     echo "zend_extension=/usr/local/ioncube/ioncube_loader_lin_7.2.so" >> /usr/local/etc/php/php.ini
-    
-# Copy the `xdebug.ini` file into place for xdebug
-COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+   
 
 # Copy the `zzz-docker.conf` file into place for php-fpm
 COPY ./zzz-docker.conf /usr/local/etc/php-fpm.d/zzz-docker.conf
