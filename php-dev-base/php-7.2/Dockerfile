@@ -53,7 +53,7 @@ RUN apt-get update \
         sysvmsg \
         sysvsem \
         sysvshm \
-        zip \
+        zip
 
 ADD https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz /tmp/
 
