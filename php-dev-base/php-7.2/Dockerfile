@@ -9,6 +9,8 @@ RUN apt-get update \
         autoconf \
         ca-certificates \
         curl \
+        default-mysql-client \
+        default-libmysqlclient-dev \
         g++ \
         git \
         libbz2-dev \
