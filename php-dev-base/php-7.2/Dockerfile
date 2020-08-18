@@ -29,6 +29,10 @@ RUN apt-get update \
         vim \
         nano \
     && \
+    # pecl PHP extensions
+    pecl install \
+        xdebug-2.9.6 \
+    && \
     # Configure PHP extensions
     docker-php-ext-configure \
         gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
@@ -53,7 +57,11 @@ RUN apt-get update \
         sysvmsg \
         sysvsem \
         sysvshm \
-        zip
+        zip \
+        && \
+    # Enable PHP extensions
+    docker-php-ext-enable \
+        xdebug
 
 ADD https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz /tmp/
 
@@ -66,7 +74,7 @@ RUN tar xzfC /tmp/ioncube_loaders_lin_x86-64.tar.gz /tmp/ \
 # Append our php.ini overrides to the end of the file
 RUN echo "upload_max_filesize = 10M" > /usr/local/etc/php/php.ini && \
     echo "post_max_size = 10M" >> /usr/local/etc/php/php.ini && \
-    echo "max_execution_time = 300" >> /usr/local/etc/php/php.ini && \
+    echo "max_execution_time = 600" >> /usr/local/etc/php/php.ini && \
     echo "memory_limit = 512M" >> /usr/local/etc/php/php.ini && \
     echo "opcache.revalidate_freq = 0" >> /usr/local/etc/php/php.ini && \
     echo "opcache.validate_timestamps = 1" >> /usr/local/etc/php/php.ini && \
