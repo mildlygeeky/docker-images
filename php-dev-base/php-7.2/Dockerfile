@@ -31,7 +31,7 @@ RUN apt-get update \
     && \
     # pecl PHP extensions
     pecl install \
-        xdebug-2.9.6 \
+        xdebug-3.0.2 \
     && \
     # Configure PHP extensions
     docker-php-ext-configure \
