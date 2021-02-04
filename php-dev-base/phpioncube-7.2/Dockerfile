@@ -31,7 +31,7 @@ RUN apt-get update \
     && \
     # pecl PHP extensions
     pecl install \
-        xdebug-2.9.6 \
+        xdebug-3.0.2 \
     && \
     # Configure PHP extensions
     docker-php-ext-configure \
@@ -80,8 +80,7 @@ RUN echo "upload_max_filesize = 10M" > /usr/local/etc/php/php.ini && \
     echo "opcache.validate_timestamps = 1" >> /usr/local/etc/php/php.ini && \
     echo "zend_extension=/usr/local/ioncube/ioncube_loader_lin_7.2.so" >> /usr/local/etc/php/php.ini
    
-COPY ./xdebug.ini /usr/local/xdebug.ini
-COPY /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/docker-php-ext-xdebug.ini
+COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # Copy the `zzz-docker.conf` file into place for php-fpm
 COPY ./zzz-docker.conf /usr/local/etc/php-fpm.d/zzz-docker.conf
