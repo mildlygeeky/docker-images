@@ -48,6 +48,7 @@ RUN apt-get update \
         iconv \
         intl \
         mbstring \
+        mysqli \
         opcache \
         pdo \
         pdo_mysql \
@@ -61,7 +62,8 @@ RUN apt-get update \
         && \
     # Enable PHP extensions
     docker-php-ext-enable \
-        xdebug
+        xdebug \
+        mysqli
 
 ADD https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz /tmp/
 
